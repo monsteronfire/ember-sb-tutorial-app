@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 const {
-  Route
+  Route,
+  set
 } = Ember;
 
 export default Route.extend({
@@ -11,5 +12,11 @@ export default Route.extend({
       author: 'This Guy',
       content: 'Some content, right'
     });
+  },
+
+  setupController(controller, model) {
+    //Instead of Ember.set(), we can just use set() because of destructuring
+    //This set() below will set the model for this route as "post"
+    set(controller, 'post', model);
   }
 });
